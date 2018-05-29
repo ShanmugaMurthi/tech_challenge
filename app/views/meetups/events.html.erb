@@ -1,0 +1,79 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h4 class="modal-title">Events</h4>
+</div>
+<div class="modal-body">
+  <div class="container" align="center"> 
+    <% if @events  && @events.size.to_i!=0%>
+      <h4 class="modal_event_title"><b><%=@events.first["name"]%></b></h4> 
+      <h4 class="modal_event_title">Past events</h4>
+    <% @events.each do |i| %>
+      <div class="row" >
+        <div class="col-md-6">        
+          <div class="panel panel-default  panel--styled">
+            <div class="panel-body">
+              <div class="col-md-6 panelTop">
+                 <p class="p_content"><b>Date & Time :</b> <%=i["local_date"] ? i["local_date"] : ""%>,<%= i["local_time"] ? i["local_time"] : ""%></p><br/>
+                 <p class="p_content">
+                 <b>Venue : </b><%=i["venue"] ? i["venue"]["name"] : ""%></p><br/>
+                 <p class="p_content">
+                 <b>RSVP Count :</b> <%=i["yes_rsvp_count"]%>
+                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%> 
+    <%else%>
+    <h4 class="modal_event_title">Past events</h4>
+    <div class="row" >
+      <div class="col-md-6">     
+        <div class="panel panel-default  panel--styled">
+          <div class="panel-body">
+            <div class="col-md-6 panelTop">
+               No Past Events Found!!!
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <%end%>
+    <h4 class="modal_event_title">Future events</h4>
+    <% if @future_events && @future_events.size.to_i!=0 %>
+    <% @future_events.each do |i| %>
+      <div class="row" >
+        <div class="col-md-6">     
+          <div class="panel panel-default  panel--styled">
+            <div class="panel-body">
+              <div class="col-md-6 panelTop">
+                <p class="p_content"><b>Date & Time :</b> <%=i["local_date"] ? i["local_date"] : ""%>,<%= i["local_time"] ? i["local_time"] : ""%></p><br/>
+                <p class="p_content">
+                <b>Venue : </b><%=i["venue"] ? i["venue"]["name"] : ""%></p><br/>
+                <p class="p_content">
+                <b>RSVP Count :</b> <%=i["yes_rsvp_count"]%>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+    <%else%>
+    <div class="row" >
+      <div class="col-md-6">     
+        <div class="panel panel-default  panel--styled">
+          <div class="panel-body">
+            <div class="col-md-6 panelTop">
+            No Future Events Found!!!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+</div>

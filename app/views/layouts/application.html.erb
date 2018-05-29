@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestApp</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+	.col-xs-8 {
+	  padding-left: 20%;
+	}
+	.p_content{
+	  margin: 0px 14px -13px 10px !important;
+	  text-align: left;
+	}
+	.modal_event_title{
+	  margin-left: -52%;	
+	}
+    </style>
+  </head>
+  <body>
+  	<div class="container" align="center">
+	  <h1>Meetups Client</h1>
+	  <%= yield %>
+    </div>
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+        <div class="modal-content"></div>
+      </div>
+    </div>
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+	  $('.modal').on('hidden.bs.modal', function(e)
+	    { 
+	      $(this).removeData();
+	    });
+	});
+	</script>
+  </body>
+</html>
