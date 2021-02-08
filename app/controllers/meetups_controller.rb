@@ -17,6 +17,8 @@ class MeetupsController < ApplicationController
 
   private
   def json_response(results)
+    # I find it odd that we have to do this. Is there a more optimal way
+    # where you could avoid doing this check for a string and +gsub+'ing?
     results.is_a?(String)? JSON.parse(results.gsub('=>',':')): results
   end
 
@@ -33,6 +35,9 @@ class MeetupsController < ApplicationController
   end
 
   def meetup_service
-    @meetup_service ||= MeetupService.new 
+    # So a new instance is created for every request.
+    # Do we need a new instance for every request? As far as I see, its not
+    # request dependant. Could this be done in a more efficient way?
+    @meetup_service ||= MeetupService.new
   end
 end
